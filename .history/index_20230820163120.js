@@ -1,21 +1,14 @@
 const express = require("express");
 const path = require("path");
+const { connectDB } = require("./src/config/connectDB");
 
-const database = require("./src/config/db/connectMongoDB");
-const { Kitten } = require("./src/config/Model/modelMongoDB");
-
-database.connect();
-
-// const cat = new Kitten({ name: "silence" });
-
-const cat = async () => {
-  await Kitten.insertMany([
-    { name: "Phuong" },
-    { name: "Huy" },
-    { name: "Huy Phuong" },
-  ]);
-};
-cat();
+connectDB().query(
+  'SELECT * FROM `Users` WHERE `name` = "hoidanit" ',
+  function (err, results, fields) {
+    console.log(results); // results contains rows returned by server
+    console.log(fields); // fields contains extra meta data about results, if available
+  }
+);
 
 // biến môi trường
 require("dotenv").config();

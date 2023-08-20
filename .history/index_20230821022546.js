@@ -10,9 +10,9 @@ database.connect();
 
 const cat = async () => {
   await Kitten.insertMany([
-    { name: "Phuong" },
-    { name: "Huy" },
-    { name: "Huy Phuong" },
+    { name: "small" },
+    { name: "small" },
+    { name: "small" },
   ]);
 };
 cat();

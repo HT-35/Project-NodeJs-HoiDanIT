@@ -7,15 +7,11 @@ const { Kitten } = require("./src/config/Model/modelMongoDB");
 database.connect();
 
 // const cat = new Kitten({ name: "silence" });
+const cat =
+    const cat = new Kitten({ name: "silence" });
 
-const cat = async () => {
-  await Kitten.insertMany([
-    { name: "Phuong" },
-    { name: "Huy" },
-    { name: "Huy Phuong" },
-  ]);
-};
-cat();
+
+cat.save();
 
 // biến môi trường
 require("dotenv").config();
@@ -34,13 +30,13 @@ app.set("view engine", "ejs");
 app.use("/public", express.static(path.join(__dirname, "./src/public")));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { name: "Tran Quang Huy" });
+    res.render("index.ejs", { name: "Tran Quang Huy" });
 });
 
 app.get("/:slug", (req, res) => {
-  res.send("404 notfound !!");
+    res.send("404 notfound !!");
 });
 
 app.listen(PORT, () => {
-  console.log(`địa chỉ:  http://localhost:3000`);
+    console.log(`địa chỉ:  http://localhost:3000`);
 });

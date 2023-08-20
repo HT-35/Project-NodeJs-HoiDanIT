@@ -1,21 +1,9 @@
 const express = require("express");
 const path = require("path");
 
-const database = require("./src/config/db/connectMongoDB");
-const { Kitten } = require("./src/config/Model/modelMongoDB");
+const database = require("./src/config/connectMongoDB");
 
 database.connect();
-
-// const cat = new Kitten({ name: "silence" });
-
-const cat = async () => {
-  await Kitten.insertMany([
-    { name: "Phuong" },
-    { name: "Huy" },
-    { name: "Huy Phuong" },
-  ]);
-};
-cat();
 
 // biến môi trường
 require("dotenv").config();

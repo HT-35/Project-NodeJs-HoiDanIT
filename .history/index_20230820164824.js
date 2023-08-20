@@ -1,21 +1,21 @@
 const express = require("express");
 const path = require("path");
 
-const database = require("./src/config/db/connectMongoDB");
-const { Kitten } = require("./src/config/Model/modelMongoDB");
+const { connectDB } = require("./src/config/connectDB");
 
-database.connect();
+(async () => {
+  const connection = connectDB(); // Kết nối cơ sở dữ liệu
 
-// const cat = new Kitten({ name: "silence" });
-
-const cat = async () => {
-  await Kitten.insertMany([
-    { name: "Phuong" },
-    { name: "Huy" },
-    { name: "Huy Phuong" },
-  ]);
-};
-cat();
+  const query = 'SELECT * FROM `Users` WHERE `name` = "hoidanit"';
+  try {
+    const [results, fields] = await connection.promise().query(query);
+    console.log(results); // Kết quả chứa các hàng được trả về bởi máy chủ
+    console.log(fields); // Thông tin bổ sung về kết quả, nếu có
+  } catch (err) {
+    console.error("Lỗi truy vấn:", err);
+  }
+})();
+query;
 
 // biến môi trường
 require("dotenv").config();

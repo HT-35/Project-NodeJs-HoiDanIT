@@ -16,15 +16,15 @@ const connectDatabase = () => {
     console.log(error);
   }
 };
-const queryDB = () => {
-  connectDatabase().query(
-    'SELECT * FROM `Users` WHERE `name` = "hoidanit"',
-    function (err, results, fields) {
-      console.log(">>> results", results); // results contains rows returned by server
-      console.log(">>> fields", fields); // fields contains extra meta data about results, if available
-    }
-  );
-};
+// const queryDB = () => {
+//   connectDatabase().query(
+//     'SELECT * FROM `Users` WHERE `name` = "hoidanit"',
+//     function (err, results, fields) {
+//       console.log(">>> results", results); // results contains rows returned by server
+//       console.log(">>> fields", fields); // fields contains extra meta data about results, if available
+//     }
+//   );
+// };
 module.exports = {
   connectDatabase,
   queryDB,

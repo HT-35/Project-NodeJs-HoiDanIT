@@ -8,14 +8,9 @@ database.connect();
 
 // const cat = new Kitten({ name: "silence" });
 
-const cat = async () => {
-  await Kitten.insertMany([
-    { name: "Phuong" },
-    { name: "Huy" },
-    { name: "Huy Phuong" },
-  ]);
+const cat = () => {
+  new Kitten.insertMany([{ size: "small" }]);
 };
-cat();
 
 // biến môi trường
 require("dotenv").config();

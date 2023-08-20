@@ -9,11 +9,7 @@ database.connect();
 // const cat = new Kitten({ name: "silence" });
 
 const cat = async () => {
-  await Kitten.insertMany([
-    { name: "Phuong" },
-    { name: "Huy" },
-    { name: "Huy Phuong" },
-  ]);
+  await Kitten.insertMany([{ name: "small" }]);
 };
 cat();
 
