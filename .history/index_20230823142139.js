@@ -3,8 +3,6 @@ const path = require("path");
 
 // const { root } = require("./src/router/root.router");
 
-const root = require("./src/router/root.router");
-
 const database = require("./src/config/db/connectMongoDB");
 
 database.connect();

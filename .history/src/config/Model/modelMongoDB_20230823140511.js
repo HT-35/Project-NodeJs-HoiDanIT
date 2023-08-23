@@ -6,4 +6,6 @@ const kittySchema = new mongoose.Schema({
 
 const Kitten = mongoose.model("Kitten", kittySchema);
 
-module.exports = Kitten;
+module.exports = {
+  Kitten,
+};

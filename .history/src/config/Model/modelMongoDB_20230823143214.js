@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const kittySchema = new mongoose.Schema({
-  name: String,
+    name: String,
 });
 
 const Kitten = mongoose.model("Kitten", kittySchema);
 
-module.exports = Kitten;
+module.exports =
+    Kitten, ;

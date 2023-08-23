@@ -1,13 +1,14 @@
 const express = require("express");
 const path = require("path");
 
-// const { root } = require("./src/router/root.router");
-
-const root = require("./src/router/root.router");
+const { root } = require("./src/router/root.router");
 
 const database = require("./src/config/db/connectMongoDB");
+const { Kitten } = require("./src/config/Model/modelMongoDB");
 
 database.connect();
+
+// const cat = new Kitten({ name: "silence" });
 
 // biến môi trường
 require("dotenv").config();

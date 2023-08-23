@@ -1,0 +1,5 @@
+const Kitten = require("../config/Model/modelMongoDB");
+
+const getAllUserController = (req, res) => {};
+
+module.exports = getAllUserController;

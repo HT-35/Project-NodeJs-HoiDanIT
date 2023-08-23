@@ -1,13 +1,21 @@
 const express = require("express");
 const path = require("path");
 
-// const { root } = require("./src/router/root.router");
-
-const root = require("./src/router/root.router");
-
 const database = require("./src/config/db/connectMongoDB");
+const { Kitten } = require("./src/config/Model/modelMongoDB");
 
 database.connect();
+
+// const cat = new Kitten({ name: "silence" });
+
+const cat = async () => {
+  await Kitten.insertMany([
+    { name: "Phuong" },
+    { name: "Huy" },
+    { name: "Huy Phuong" },
+  ]);
+};
+cat();
 
 // biến môi trường
 require("dotenv").config();
@@ -25,8 +33,13 @@ app.set("view engine", "ejs");
 //set static public
 app.use("/public", express.static(path.join(__dirname, "./src/public")));
 
-// set router
-app.use("/", root);
+app.get("/", (req, res) => {
+  res.render("index.ejs", { name: "Tran Quang Huy" });
+});
+
+app.get("/:slug", (req, res) => {
+  res.send("404 notfound !!");
+});
 
 app.listen(PORT, () => {
   console.log(`địa chỉ:  http://localhost:3000`);
