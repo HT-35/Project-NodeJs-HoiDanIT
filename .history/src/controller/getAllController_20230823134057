@@ -1,8 +1,0 @@
-const Kitten = require("../config/Model/modelMongoDB");
-const mongoose = require('mongoose');
-
-const getAllUserController = (req, res) => {
-    const getall = Kitten.;
-};
-
-module.exports = getAllUserController;
