@@ -1,5 +1,11 @@
 const express = require("express");
 const path = require("path");
+const app = express(); // app express
+const multer = require("multer");
+const bodyParser = require("body-parser");
+// ...
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // const { root } = require("./src/router/root.router");
 
@@ -12,7 +18,14 @@ database.connect();
 // biến môi trường
 require("dotenv").config();
 
-const app = express(); // app express
+// gửi dữ liệu từ FORM lên server
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+// gửi dữ liệu từ famework, postman,axios,.... lên server
+app.use(express.json());
 
 // nếu port trong process có vấn đề thì sẽ lấy port 3050
 const PORT = process.env.PORT || 3050;
