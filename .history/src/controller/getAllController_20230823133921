@@ -1,3 +1,0 @@
-const getAllUserController = (req, res) => {};
-
-module.exports = getAllUserController;
