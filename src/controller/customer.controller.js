@@ -5,7 +5,29 @@ const uploadController = (req, res) => {
 
   // lấy ra địa chỉ ảnh
   const imgPath = req.file.path;
-  console.log(imgPath);
+
+  const createCustomer = async () => {
+    const create = await customerModel.create({
+      name,
+      address,
+      phone,
+      email,
+      description,
+      imgage: imgPath,
+    });
+    create;
+  };
+  createCustomer();
+
+  // console.log(createCustomer);
+  res.status(200).json({
+    name,
+    address,
+    phone,
+    email,
+    description,
+    imgage: imgPath,
+  });
 };
 
 const getAllCustomer = async (req, res) => {

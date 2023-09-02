@@ -37,4 +37,4 @@ customer.plugin(mongooseDelete, {
 
 const customerModel = mongoose.model("customerModel", customer);
 
-module.exports = customerModel;
+module.exports = { customer, customerModel };
