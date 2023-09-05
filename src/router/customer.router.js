@@ -12,11 +12,6 @@ const {
   deleteArray,
 } = require("../controller/customer.controller");
 
-const {
-  queryForm,
-  paramsController,
-} = require("../controller/query.controller");
-
 const storage = require("../middleware/upload.img");
 
 const upload = multer({ storage: storage });
@@ -44,11 +39,5 @@ customer.get("/delete/:id", restoreByID);
 
 // delete Arr Customer // http://localhost:3000/customer/delete/arr
 customer.delete("/delete/arr", deleteArray);
-
-// query form  // http://localhost:3000/customer/form?name=huy
-customer.get("/form", queryForm);
-
-// params  // http://localhost:3000/customer/form?name=huy
-customer.get("/form/:id/:size", paramsController);
 
 module.exports = customer;
