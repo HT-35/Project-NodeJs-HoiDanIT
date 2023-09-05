@@ -1,15 +1,7 @@
 const mongoose = require("mongoose");
 const mongooseDelete = require("mongoose-delete");
-const { all } = require("../../router/home.router");
 
 const { customer, customerModel } = require("./customer.model");
-
-// shape data
-// const customerSchema = new mongoose.Schema({
-//   name: String,
-//   phone: String,
-//   email: String,
-// });
 
 const userLeaderSchema = new mongoose.Schema({
   name: String,
@@ -25,17 +17,22 @@ const projectSchema = new mongoose.Schema(
     startDate: String,
     endDate: String,
     description: String,
+    // embedded is customer
     customerInfor: customer,
-    usersInfor: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    usersInfor: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
     leader: userLeaderSchema,
-    tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task" }],
+    tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: "task" }],
   },
   {
     timestamps: true, // createdAt, updatedAt
   }
 );
 
-projectSchema.plugin(mongooseDelete, { overrideMethods: all });
+// add plugin mongooseDelete for soft remove
+projectSchema.plugin(mongooseDelete, {
+  deletedAt: true,
+  overrideMethods: "all",
+});
 
 // create model
 const Project = mongoose.model("Project", projectSchema);

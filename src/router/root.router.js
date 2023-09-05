@@ -1,12 +1,16 @@
 const express = require("express");
 const root = express.Router();
 
-const homeRouter = require("./home.router");
+const projectRouter = require("./project.project");
 
-const customer = require("./customer.router");
+// const homeRouter = require("./home.router");
 
-root.use("/", homeRouter);
+// const customer = require("./customer.router");
 
-root.use("/customer", customer);
+// root.use("/", homeRouter);
+
+// root.use("/customer", customer);
+
+root.use("/", projectRouter);
 
 module.exports = root;
