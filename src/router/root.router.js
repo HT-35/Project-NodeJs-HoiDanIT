@@ -3,13 +3,13 @@ const root = express.Router();
 
 const projectRouter = require("./project.project");
 
-// const homeRouter = require("./home.router");
+const homeRouter = require("./home.router");
 
-// const customer = require("./customer.router");
+const customer = require("./customer.router");
 
-// root.use("/", homeRouter);
+root.use("/", homeRouter);
 
-// root.use("/customer", customer);
+root.use("/customer", customer);
 
 root.use("/", projectRouter);
 
