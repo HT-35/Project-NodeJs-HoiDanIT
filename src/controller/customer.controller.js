@@ -14,7 +14,7 @@ const uploadController = async (req, res) => {
         address,
         phone,
         email,
-        image: imgPath, // Sửa imgage thành image
+        imgage: imgPath, // Sửa imgage thành image
         description,
       });
       return create; // Trả về kết quả từ create để sử dụng sau này
