@@ -1,33 +1,35 @@
-const customerModel = require("../config/Model/customer.model");
+const { customer, customerModel } = require("../config/Model/customer.model");
 
-const uploadController = (req, res) => {
+const uploadController = async (req, res) => {
   const { name, address, phone, email, description } = req.body;
 
-  // lấy ra địa chỉ ảnh
+  // Lấy ra địa chỉ ảnh
   const imgPath = req.file.path;
+  console.log(imgPath);
 
   const createCustomer = async () => {
-    const create = await customerModel.create({
-      name,
-      address,
-      phone,
-      email,
-      description,
-      imgage: imgPath,
-    });
-    create;
+    try {
+      const create = await customerModel.create({
+        name,
+        address,
+        phone,
+        email,
+        image: imgPath, // Sửa imgage thành image
+        description,
+      });
+      return create; // Trả về kết quả từ create để sử dụng sau này
+    } catch (error) {
+      throw error; // Ném lỗi nếu có lỗi xảy ra
+    }
   };
-  createCustomer();
 
-  // console.log(createCustomer);
-  res.status(200).json({
-    name,
-    address,
-    phone,
-    email,
-    description,
-    imgage: imgPath,
-  });
+  try {
+    const createdCustomer = await createCustomer(); // Chờ cho đến khi createCustomer hoàn thành
+    res.status(200).json(createdCustomer);
+  } catch (error) {
+    console.error("Error creating customer:", error);
+    res.status(500).json({ error: "Internal Server Error" }); // Xử lý lỗi nếu có lỗi xảy ra
+  }
 };
 
 const getAllCustomer = async (req, res) => {
