@@ -38,7 +38,7 @@ app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
 //set static public
-app.use("/public", express.static(path.join(__dirname, "./src/public")));
+app.use("/src/public", express.static(path.join(__dirname, "./src/public")));
 
 // set router
 app.use("/", root);
@@ -73,6 +73,8 @@ const connectdbDrive = async () => {
       // console.log("Found documents =>", findResult);
 
       // find by id,.....
+
+      //   C:\Users\Mr.Huy\Documents\NodeJs\Nodejs-HoiDanIT\src\public\img\phuongvo123.jpg
 
       const Id = "64f05cd8c8afdb3820f9c8e2";
       console.log(Id);
